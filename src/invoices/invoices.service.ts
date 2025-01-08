@@ -100,6 +100,10 @@ export class InvoicesService {
     return updatedInvoice;
   }
 
+  async removeInvoiceFromUser(userId: string, invoiceId: string): Promise<any> {
+    return this.usersService.removeInvoice(userId, invoiceId);
+  }
+
   async remove(id, userId) {
     const post = await this.invoiceModel.findById(id);
 

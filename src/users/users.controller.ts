@@ -35,10 +35,11 @@ export class UsersController {
     return this.usersService.update(userId, body);
   }
 
-  @Delete('')
+  @Delete(':id')
   @UseGuards(AuthGuard)
   remove(@Req() request) {
     const userId = request.userId;
     return this.usersService.remove(userId);
   }
+  
 }

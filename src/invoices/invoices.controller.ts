@@ -50,8 +50,9 @@ export class InvoicesController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
-  remove(@Param() params, @Req() request) {
+  async remove(@Param('id') invoiceId: string, @Req() request) {
     const userId = request.userId;
-    return this.invoicesService.remove(params.id, userId);
+    await this.invoicesService.removeInvoiceFromUser(userId, invoiceId);
+    return this.invoicesService.remove(invoiceId, userId);
   }
 }

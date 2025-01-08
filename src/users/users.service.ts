@@ -50,6 +50,13 @@ export class UsersService {
     return { message: 'user updated successfully', data: updatedUser };
   }
 
+  async removeInvoice(userId: string, invoiceId: string): Promise<any> {
+    return this.userModel.updateOne(
+      { _id: userId },
+      { $pull: { invoices: invoiceId } },
+    );
+  }
+
   async remove(id: mongoose.Schema.Types.ObjectId) {
     const user = await this.userModel.findById(id);
     if (!user) {
@@ -78,4 +85,5 @@ export class UsersService {
     );
     return updatedUser;
   }
+  
 }
