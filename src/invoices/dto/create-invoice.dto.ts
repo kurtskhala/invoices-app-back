@@ -1,4 +1,12 @@
-import { IsString, IsNumber, IsEmail, IsEnum, ValidateNested, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsEmail,
+  IsEnum,
+  ValidateNested,
+  IsOptional,
+  IsDateString,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 class AddressDto {
@@ -29,6 +37,9 @@ export class ItemDto {
 export class CreateInvoiceDto {
   @IsString()
   description: string;
+
+  @IsDateString()
+  invoiceDate: string;
 
   @IsNumber()
   paymentTerms: number;

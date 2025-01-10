@@ -46,6 +46,9 @@ export class Invoice {
   @Prop({ type: String })
   description: string;
 
+  @Prop({ type: String })
+  invoiceDate: string;
+
   @Prop({ type: Number, required: true })
   paymentTerms: number;
 
@@ -55,7 +58,11 @@ export class Invoice {
   @Prop({ type: String })
   clientEmail: string;
 
-  @Prop({ type: String, enum: ['paid', 'pending', 'draft'], default: 'pending' })
+  @Prop({
+    type: String,
+    enum: ['paid', 'pending', 'draft'],
+    default: 'pending',
+  })
   status: string;
 
   @Prop({ type: Address })
@@ -70,7 +77,11 @@ export class Invoice {
   @Prop({ type: Number, required: true })
   total: number;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User.name,
+    required: true,
+  })
   user: mongoose.Schema.Types.ObjectId;
 }
 

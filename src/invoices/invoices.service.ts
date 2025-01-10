@@ -52,7 +52,8 @@ export class InvoicesService {
         total,
         user: userId,
         paymentDue: new Date(
-          Date.now() + createInvoiceDto.paymentTerms * 24 * 60 * 60 * 1000,
+          new Date(createInvoiceDto.invoiceDate).getTime() +
+            createInvoiceDto.paymentTerms * 24 * 60 * 60 * 1000,
         ),
       });
       await this.usersService.addInvoice(user._id, expense._id);
@@ -83,7 +84,8 @@ export class InvoicesService {
 
     if (updateInvoiceDto.paymentTerms) {
       updateData.paymentDue = new Date(
-        Date.now() + updateInvoiceDto.paymentTerms * 24 * 60 * 60 * 1000,
+        new Date(updateInvoiceDto.invoiceDate).getTime() +
+          updateInvoiceDto.paymentTerms * 24 * 60 * 60 * 1000,
       );
     }
 
