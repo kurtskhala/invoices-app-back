@@ -28,8 +28,10 @@ export class InvoicesController {
   }
 
   @Get()
-  findAll() {
-    return this.invoicesService.findAll();
+  @UseGuards(AuthGuard)
+  findAll(@Req() request) {
+    const userId = request.userId;
+    return this.invoicesService.findAll(userId);
   }
 
   @Get(':id')

@@ -61,8 +61,8 @@ export class InvoicesService {
     }
   }
 
-  findAll() {
-    return this.invoiceModel.find();
+  findAll(userId: string) {
+    return this.invoiceModel.find({ user: userId });
   }
 
   async findOne(id: mongoose.Schema.Types.ObjectId) {
