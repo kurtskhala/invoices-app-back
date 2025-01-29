@@ -10,7 +10,7 @@ import { UsersModule } from 'src/users/users.module';
     ConfigModule.forRoot(),
     JwtModule.register({
       global: true,
-      secret: process.env.JWT_SECRET,
+      secret: "araferi",
       signOptions: {expiresIn: "1h"}
     }),
     UsersModule,
