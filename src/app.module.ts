@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRoot("mongodb+srv://admin:admin@gita-back.ax1s0.mongodb.net/invoice-app?retryWrites=true&w=majority&appName=Gita-back"),
+    MongooseModule.forRoot(process.env.MONGO_URL),
     AuthModule,
     InvoicesModule,
     UsersModule,
