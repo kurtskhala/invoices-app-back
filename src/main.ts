@@ -6,7 +6,10 @@ import * as morgan from 'morgan';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'https://invoices-jeckxjgw0-kurtskhalas-projects.vercel.app',
+    origin: [
+      'https://invoices-jeckxjgw0-kurtskhalas-projects.vercel.app',
+      'https://e-commerce-angular-full.netlify.app',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
